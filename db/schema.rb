@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_200253) do
+ActiveRecord::Schema.define(version: 2020_01_15_200856) do
 
   create_table "aspirations", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.integer "timeframe"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dreamers", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
