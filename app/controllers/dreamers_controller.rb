@@ -2,36 +2,36 @@ class DreamersController < ApplicationController
     before_action :set_dreamer, only: [:update, :destroy]
 
   def index
-    dreamers = Dreamer.all
+    @dreamers = Dreamer.all
     options = {
       include: [:aspirations]
     }
-    render json: DreamerSerializer.new(dreamer, options)
+    render json: DreamerSerializer.new(@dreamer, options)
   end
 
   def create
-    dreamer = Dreamer.create!(dreamer_params)
+    @dreamer = Dreamer.create!(dreamer_params)
     options = {
       include: [:aspirations]
     }
-    render json: DreamerSerializer.new(dreamer)
+    render json: DreamerSerializer.new(@dreamer)
   end
 
   def show
-    dreamer = Dreamer.find_by(id: params[:id])
+    @dreamer = Dreamer.find_by(id: params[:id])
     options = {
       include: [:aspirations]
     }
-    render json: DreamerSerializer.new(dreamer, options)
+    render json: DreamerSerializer.new(@dreamer, options)
   end
 
   def update
-    dreamer.update(dreamer_params)
+    @dreamer.update(dreamer_params)
     head :no_content
   end
 
   def destroy
-    dreamer.destroy
+    @dreamer.destroy
     head :no_content
   end
 
@@ -42,6 +42,6 @@ class DreamersController < ApplicationController
   end
 
   def set_dreamer
-    dreamer = Dreamer.find(params[:id])
+    @dreamer = Dreamer.find(params[:id])
   end
 end
