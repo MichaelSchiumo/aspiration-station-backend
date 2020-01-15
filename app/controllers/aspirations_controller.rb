@@ -2,31 +2,31 @@ class AspirationsController < ApplicationController
   before_action :set_aspiration, only: [:update, :destroy]
 
   def index
-    aspirations = Aspiration.all
-    render json: AspirationSerializer.new(aspirations), include: [:dreamer]
+    @aspirations = Aspiration.all
+    render json: AspirationSerializer.new(@aspirations), include: [:dreamer]
   end
 
   def create
-    aspiration = Aspiration.new(aspiration_params)
+    @aspiration = Aspiration.new(aspiration_params)
 
-    if aspiration.save
-      json_response(aspiration, :created)
+    if @aspiration.save
+      json_response(@aspiration, :created)
     else
       render json: { message: 'Aspiration was not created.'}
     end
   end
 
   def show
-    aspiration = Aspiration.find_by(id: params[:id])
-    render json: AspirationSerializer.new(aspiration), include: [:dreamer]
+    @aspiration = Aspiration.find_by(id: params[:id])
+    render json: AspirationSerializer.new(@aspiration), include: [:dreamer]
   end
 
   def update
-    aspiration.update(aspiration_params)
+    @aspiration.update(aspiration_params)
   end
 
   def destroy
-    aspiration.destroy
+    @aspiration.destroy
     head :no_content
   end
 
@@ -37,6 +37,6 @@ class AspirationsController < ApplicationController
   end
 
   def set_aspiration
-    aspiration = Aspiration.find_by(id: params[:id])
+    @aspiration = Aspiration.find_by(id: params[:id])
   end
 end
