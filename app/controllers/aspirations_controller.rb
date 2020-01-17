@@ -7,10 +7,15 @@ class AspirationsController < ApplicationController
   end
 
   def create
-    @aspiration = Aspiration.new(aspiration_params)
+    @dreamer = Dreamer.create(name: aspiration_params[:name], age: aspiration_params[:age], sex: aspiration_params[:sex])
+
+    @aspiration = @dreamer.aspirations.build(title: aspiration_params[:title], category: aspiration_params[:category], timeframe: aspiration_params[:timeframe], status: aspiration_params[:status])
+
+
 
     if @aspiration.save
-      json_response(@aspiration, :created)
+      render json: {aspiration: @aspiration}
+      # json_response(@aspiration, :created)
     else
       render json: { message: 'Aspiration was not created.'}
     end
@@ -33,7 +38,7 @@ class AspirationsController < ApplicationController
   private
 
   def aspiration_params
-    params.require(:aspiration).permit(:title, :category, :timeframe, :status, :dreamer_id)
+    params.require(:aspiration).permit(:title, :category, :timeframe, :status, :dreamer_id, :age, :sex, :name)
   end
 
   def set_aspiration
