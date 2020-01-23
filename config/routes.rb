@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       resources :aspirations
       resources :dreamers
       resources :songs
-
+      resources :quotes
 
 end
