@@ -6,7 +6,8 @@ class DreamersController < ApplicationController
     options = {
       include: [:aspirations]
     }
-    render json: DreamerSerializer.new(@dreamer, options)
+    
+    render json: DreamerSerializer.new(@dreamers, options)
   end
 
   def create
