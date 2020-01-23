@@ -1,5 +1,5 @@
-  class Quote < ApplicationRecord
-    belongs_to :dreamer
+   class QuotesController < ApplicationController
+
 
       def index
         @quotes = Quote.all
@@ -7,7 +7,7 @@
       end
 
       def create
-
+        byebug
         @dreamer = Dreamer.create(name: quote_params[:name], age: quote_params[:age], sex: quote_params[:sex])
 
         @quote = @dreamer.quotes.build(author: quote_params[:author], content: quote_params[:genre])
