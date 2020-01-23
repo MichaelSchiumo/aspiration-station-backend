@@ -1,5 +1,7 @@
 {
   "name": "aspiration_station_backend",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react-router-dom": "^5.1.2"
+  }
 }

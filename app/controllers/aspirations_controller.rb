@@ -31,8 +31,9 @@ class AspirationsController < ApplicationController
   end
 
   def destroy
+
     @aspiration.destroy
-    head :no_content
+    render json: { message: 'Aspiration was deleted.' }
   end
 
   private
