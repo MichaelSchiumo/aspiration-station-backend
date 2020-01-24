@@ -4,7 +4,7 @@ class DreamersController < ApplicationController
   def index
     @dreamers = Dreamer.all
     options = {
-      include: [:aspirations, :songs]
+      include: [:aspirations, :songs, :quotes]
     }
 
     render json: DreamerSerializer.new(@dreamers, options)
@@ -13,7 +13,7 @@ class DreamersController < ApplicationController
   def create
     @dreamer = Dreamer.create!(dreamer_params)
     options = {
-      include: [:aspirations, :songs]
+      include: [:aspirations, :songs, :quotes]
     }
     render json: DreamerSerializer.new(@dreamer)
   end
@@ -21,7 +21,7 @@ class DreamersController < ApplicationController
   def show
     @dreamer = Dreamer.find_by(id: params[:id])
     options = {
-      include: [:aspirations, :songs]
+      include: [:aspirations, :songs, :quotes]
     }
     render json: DreamerSerializer.new(@dreamer, options)
   end
