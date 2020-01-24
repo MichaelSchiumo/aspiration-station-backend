@@ -11,7 +11,8 @@ class DreamersController < ApplicationController
   end
 
   def create
-    @dreamer = Dreamer.create!(dreamer_params)
+
+    @dreamer = Dreamer.create(dreamer_params)
     options = {
       include: [:aspirations, :songs, :quotes]
     }
