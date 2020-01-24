@@ -7,7 +7,7 @@ class AspirationsController < ApplicationController
   end
 
   def create
-    @dreamer = Dreamer.create(name: aspiration_params[:name], age: aspiration_params[:age], sex: aspiration_params[:sex])
+    @dreamer = Dreamer.new(name: aspiration_params[:name], age: aspiration_params[:age], sex: aspiration_params[:sex])
 
     @aspiration = @dreamer.aspirations.build(title: aspiration_params[:title], category: aspiration_params[:category], timeframe: aspiration_params[:timeframe], status: aspiration_params[:status])
 
