@@ -1,5 +1,5 @@
    class QuotesController < ApplicationController
-
+     before_action :set_quote, only: [:update, :destroy]
 
       def index
         @quotes = Quote.all
@@ -30,7 +30,6 @@
       end
 
       def destroy
-
         @quote.destroy
         render json: { message: 'Quote was deleted.' }
       end
