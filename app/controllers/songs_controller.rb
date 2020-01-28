@@ -7,7 +7,7 @@ class SongsController < ApplicationController
     end
 
     def create
-      byebug
+      
       @dreamer = Dreamer.create(name: song_params[:name], age: song_params[:age], sex: song_params[:sex])
 
       @song = @dreamer.songs.build(title: song_params[:title], genre: song_params[:genre], artist: song_params[:artist])

@@ -8,7 +8,7 @@
 
       def create
 
-        @dreamer = Dreamer.create(name: quote_params[:name], age: quote_params[:age], sex: quote_params[:sex])
+        @dreamer = Dreamer.create!(name: quote_params[:name], age: quote_params[:age], sex: quote_params[:sex])
 
         @quote = @dreamer.quotes.build(author: quote_params[:author], content: quote_params[:content])
 
